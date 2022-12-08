@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21.781" height="22.033" viewBox="0 0 21.781 22.033">
+  <defs>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 43 44">
+      <image width="43" height="44" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACsAAAAsCAYAAAD8WEF4AAAABHNCSVQICAgIfAhkiAAAAS1JREFUWIXtmEFuwjAQRV9QpbJC6pINl+AmPUOPwLoX6Cm6Q+I03bHvjhsUUWDRkJpRxoY0k4wrP8mS47EyP479bbkizkk8V4n+XQnzqDkmRslNyErsQ0vbG7BS+u+AL35+276u7+tyDOpa+6GOfQd9DiLHS9B/rQk/OS5L+J3MciF55Bngg/FH7qZSEbcnD9bVxKQbPBmJ6QU5supXKfG+uElDm3WFWInrlCerTSErsW1u4JasRjYrsdINhlr996BuCq4pYq2IiX3n+tQTIk9EWmwbiUlisaRYd2QlNnXq8kCxLnP+jdhiXX8hK7HFuqwoYiPMgEdg3vUFmmUMbV1JfWUaWFGsywopdjOKijuQK/t1XDkNU1puviGT+67LNJB+6JEqddPtgU9gAXAGGI7DP1gitZoAAAAASUVORK5CYII="/>
+    </pattern>
+  </defs>
+  <path id="calendar" d="M0,0,21.781.046V22L0,22.033Z" opacity="0.6" fill="url(#pattern)"/>
+</svg>

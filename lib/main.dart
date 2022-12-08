@@ -17,7 +17,7 @@ void main() async {
   await Firebase.initializeApp();
   await GetStorage.init();
   LocalStorage.loadLocalData();
-  // NotificationService.init();
+  NotificationService.init();
 
   runApp(const MyApp());
 }

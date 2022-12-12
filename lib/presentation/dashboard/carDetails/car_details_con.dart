@@ -330,7 +330,7 @@ class CarDetailsController extends GetxController {
                   const SizedBox(width: 20),
                   Expanded(
                     child: Text(
-                      "carbookwithdriver".tr,
+                      "carreservation".tr,
                       style: const TextStyle(
                         fontSize: 20,
                         color: Color(0xff707070),

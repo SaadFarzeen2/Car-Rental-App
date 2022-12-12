@@ -131,6 +131,7 @@ class RegisterScreen extends StatelessWidget {
                           AppTextField(
                             hintText: "identificationnumber".tr,
                             obsecureText: false,
+                            keyboardType: TextInputType.number,
                             prefixIcon: ImageConstant.userName,
                             border: true,
                             color: Colors.transparent,
@@ -140,7 +141,7 @@ class RegisterScreen extends StatelessWidget {
                             },
                             inputFormatters: <TextInputFormatter>[
                               FilteringTextInputFormatter.allow(
-                                RegExp("[0-9a-zA-Z]"),
+                                RegExp("[0-9]"),
                               ),
                             ],
                             errorMessage: _con.idNumberError,

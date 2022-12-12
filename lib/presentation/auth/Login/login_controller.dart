@@ -41,14 +41,14 @@ class LoginScreenController extends GetxController {
     emailError.value = '';
     passwordError.value = '';
     if (email.isEmpty) {
-      emailError.value = "pleaseenteravalidemailaddress".tr;
+      emailError.value = "enterEmailAddress".tr;
       isValid.value = false;
     } else if (!Helper.isEmail(email.value)) {
-      emailError.value = "pleaseenteravalidemailaddress".tr;
+      emailError.value = "entervalidemailaddresss".tr;
       isValid.value = false;
     }
     if (password.isEmpty) {
-      passwordError.value = "pleaseenteravalidpassword".tr;
+      passwordError.value = "pleaseentervalidpassword".tr;
       isValid.value = false;
     }
     return isValid.value;

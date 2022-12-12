@@ -167,6 +167,7 @@ final enTranslation = {
   "companyname": "Company Name",
   "carmodel": "Car model",
   "sit": "Sit",
+  "carreservation": "Car Reservation Only",
   "km": "km",
   "branchDetails": "Branch Details",
   "branchname": "Branch Name",

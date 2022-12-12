@@ -104,8 +104,12 @@ class AddEditProfileScreen extends StatelessWidget {
                       ),
                       AppTextField(
                         hintText: "identificationnumber".tr,
+                        // fieldInputType: TextInputType.number,
                         obsecureText: false,
                         prefixIcon: ImageConstant.userName,
+                        keyboardType: TextInputType.number,
+
+                        // keyboardType: TextInputType.number,
                         border: true,
                         color: Colors.transparent,
                         initialValue: _con.idNumber.value,
@@ -115,7 +119,7 @@ class AddEditProfileScreen extends StatelessWidget {
                         },
                         inputFormatters: [
                           FilteringTextInputFormatter.allow(
-                            RegExp("[0-9a-zA-Z]"),
+                            RegExp("[0-9]"),
                           ),
                         ],
                         errorMessage: _con.idNumberError,

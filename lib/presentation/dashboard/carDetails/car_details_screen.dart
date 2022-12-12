@@ -224,41 +224,41 @@ class _CarDetailScreenState extends State<CarDetailScreen> {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: AppButton(
-                                onPressed: () => con.openBottomSheet(context),
-                                text: "reservationconfirmation".tr,
-                              ),
-                            ),
-                            const SizedBox(width: 10),
-                            Expanded(
-                              child: AppButton(
-                                borderColor: Colors.black,
-                                border: true,
-                                color: Colors.white,
-                                onPressed: () => Get.back(),
-                                text: "cancellationofreservation".tr,
-                                textColor: Colors.black,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      hSizedBox10,
-
-                      // hSizedBox20,
+                      const SizedBox(height: 10),
                       // Padding(
                       //   padding: const EdgeInsets.symmetric(horizontal: 20),
-                      //   child: AppButton(
-                      //     onPressed: () => con.openBottomSheet(context),
-                      //     text: "bookCar".tr,
+                      //   child: Row(
+                      //     children: [
+                      //       Expanded(
+                      //         child: AppButton(
+                      //           onPressed: () => con.openBottomSheet(context),
+                      //           text: "reservationconfirmation".tr,
+                      //         ),
+                      //       ),
+                      //       const SizedBox(width: 10),
+                      //       Expanded(
+                      //         child: AppButton(
+                      //           borderColor: Colors.black,
+                      //           border: true,
+                      //           color: Colors.white,
+                      //           onPressed: () => Get.back(),
+                      //           text: "cancellationofreservation".tr,
+                      //           textColor: Colors.black,
+                      //         ),
+                      //       ),
+                      //     ],
                       //   ),
                       // ),
+                      // hSizedBox10,
+
+                      hSizedBox20,
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
+                        child: AppButton(
+                          onPressed: () => con.openBottomSheet(context),
+                          text: "bookCar".tr,
+                        ),
+                      ),
                       hSizedBox30,
                     ],
                   ),

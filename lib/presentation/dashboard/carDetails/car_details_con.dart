@@ -9,8 +9,11 @@ import 'package:traval/presentation/comman_widget/app_loader.dart';
 import 'package:traval/presentation/comman_widget/app_text_field.dart';
 import 'package:traval/presentation/dashboard/Payment/Payment_Screen.dart';
 import 'package:traval/presentation/dashboard/Payment/payment_type.dart';
+import 'package:traval/presentation/dashboard/bookingDetails/booking_details.dart';
 import 'package:traval/presentation/dashboard/contracts/branches_controller.dart';
+import 'package:traval/presentation/dashboard/dashboard.dart';
 import 'package:traval/presentation/dashboard/myReservations/reservations_controller.dart';
+import 'package:traval/presentation/dashboard/myReservations/reservations_screen.dart';
 import 'package:traval/repo/dashboard/dashboard_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -345,6 +348,7 @@ class CarDetailsController extends GetxController {
                 onPressed: () {
                   if (validateBooking()) {
                     // Get.to(Payment_type());
+
                     createBooking();
                   }
                 },
@@ -380,7 +384,9 @@ class CarDetailsController extends GetxController {
   }
 
   void createBooking() async {
-    Get.back();
+    // Get.back();
+
+    // Get.to(DashboardScreen());
     LoadingOverlay.of(Get.context!).show();
     http.Response? res = await DashboardRepo.createBooking(
       vehicleId: vehicle!.id!.toString(),
@@ -391,6 +397,7 @@ class CarDetailsController extends GetxController {
       withDriver: withDriver.value ? "yes" : "no",
     );
     LoadingOverlay.of(Get.context!).hide();
+
     if (res != null) {
       var decoded = json.decode(res.body);
       if (res.statusCode == 200 || res.statusCode == 201) {
@@ -421,5 +428,6 @@ class CarDetailsController extends GetxController {
     } else {
       toast(AppConfig.apiError);
     }
+    Get.off(() => MyReservationsScreen());
   }
 }

@@ -175,7 +175,7 @@ final enTranslation = {
   "driverdetails": "Driver's Details",
   "fullname": "Full Name",
   "carbookwithdriver": "Car book with driver",
-  "confirmBooking": "Confirm Booking",
+  "confirmBooking": "Reservation",
   "pleaseenterdeliverylocation": "Please enter delivery location",
   "pleaseenterreceivinglocation": "Please enter receiving location",
   "selectReceiveDate": "Select receive date",

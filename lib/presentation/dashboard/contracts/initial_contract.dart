@@ -149,18 +149,18 @@ class InitialContractScreen extends StatelessWidget {
                               timeFrom: con.branches[index].saturdayStartTime!,
                               timeTo: con.branches[index].saturdayEndTime!,
                             ),
-                            hSizedBox14,
-                            AppButton(
-                              height: 40,
-                              color: Colors.white,
-                              textColor: AppColors.appColor,
-                              border: true,
-                              onPressed: () => launchURL(
-                                lat: con.branches[index].lat,
-                                long: con.branches[index].long,
-                              ),
-                              text: "gettheroute".tr,
-                            ),
+                            // hSizedBox14,
+                            // AppButton(
+                            //   height: 40,
+                            //   color: Colors.white,
+                            //   textColor: AppColors.appColor,
+                            //   border: true,
+                            //   onPressed: () => launchURL(
+                            //     lat: con.branches[index].lat,
+                            //     long: con.branches[index].long,
+                            //   ),
+                            //   text: "gettheroute".tr,
+                            // ),
                           ],
                         ),
                       );

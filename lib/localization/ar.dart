@@ -171,7 +171,7 @@ final Map<String, String> arTranslation = {
   "driverdetails": "تفاصيل السائق",
   "fullname": "الاسم الكامل",
   "carbookwithdriver": "كتاب السيارة مع السائق",
-  "confirmBooking": "كتاب السيارة مع السائق",
+  "confirmBooking": "حجز",
   "pleaseenterdeliverylocation": "الرجاء إدخال موقع التسليم",
   "carreservation": "حجز السيارة فقط",
   "pleaseenterreceivinglocation": "الرجاء إدخال موقع الاستلام",

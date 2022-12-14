@@ -7,13 +7,9 @@ import 'package:traval/models/vehicle_model.dart';
 import 'package:traval/presentation/comman_widget/app_button.dart';
 import 'package:traval/presentation/comman_widget/app_loader.dart';
 import 'package:traval/presentation/comman_widget/app_text_field.dart';
-import 'package:traval/presentation/dashboard/Payment/Payment_Screen.dart';
-import 'package:traval/presentation/dashboard/Payment/payment_type.dart';
-import 'package:traval/presentation/dashboard/bookingDetails/booking_details.dart';
 import 'package:traval/presentation/dashboard/contracts/branches_controller.dart';
-import 'package:traval/presentation/dashboard/dashboard.dart';
+import 'package:traval/presentation/dashboard/initial_car_details/initial_car_details_screen.dart';
 import 'package:traval/presentation/dashboard/myReservations/reservations_controller.dart';
-import 'package:traval/presentation/dashboard/myReservations/reservations_screen.dart';
 import 'package:traval/repo/dashboard/dashboard_repo.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -23,6 +19,7 @@ class CarDetailsController extends GetxController {
   RxBool carLoading = false.obs;
   RxInt currentIndex = 0.obs;
   final BranchesController con2 = Get.put(BranchesController());
+
   VehicleDetailModel? vehicle;
   bool data_load = false;
 
@@ -54,10 +51,11 @@ class CarDetailsController extends GetxController {
   TextEditingController receiveDate = TextEditingController(text: "");
   DateTime? receiveDateTime;
   RxString receiveLocation = "".obs;
+  String? dummy;
   RxString receiveLocationError = "".obs;
 
-  void openDatePicker(TextEditingController d, DateTime? dateTime) async {
-    final pickDate = await showDatePicker(
+  void openDatePicker(TextEditingController d, DateTime? pickeddateTime) async {
+    DateTime? pickDate = await showDatePicker(
       builder: (context, child) {
         return Theme(
           data: Theme.of(context).copyWith(
@@ -81,7 +79,8 @@ class CarDetailsController extends GetxController {
     if (pickDate != null) {
       String date = DateFormat('yyyy-MM-dd').format(pickDate);
       d.text = date.toString();
-      dateTime = pickDate;
+      pickeddateTime = pickDate;
+      dummy = pickDate.toString();
     }
   }
 
@@ -347,9 +346,18 @@ class CarDetailsController extends GetxController {
                 text: "confirmBooking".tr,
                 onPressed: () {
                   if (validateBooking()) {
+                    Get.to(InitialCarDetailScreen(
+                      delivery_datetime: deliveryDate.text.toString(),
+                      receive_datetime: receiveDate.text.toString(),
+                      delivery_location: deliveryLocation.value,
+                      received_location: receiveLocation.value,
+                      withdriver: withDriver.value ? "yes" : "no",
+                      veh_id: vehicle!.id!.toString(),
+                      del_loc_error: deliveryLocationError.value,
+                      rec_loc_error: receiveLocationError.value,
+                    ));
                     // Get.to(Payment_type());
 
-                    createBooking();
                   }
                 },
               ),
@@ -383,51 +391,49 @@ class CarDetailsController extends GetxController {
     return isValid.value;
   }
 
-  void createBooking() async {
-    // Get.back();
+  // void createBooking() async {
+  //   Get.back();
+  //   LoadingOverlay.of(Get.context!).show();
+  //   http.Response? res = await DashboardRepo.createBooking(
+  //     vehicleId: vehicle!.id!.toString(),
+  //     pLocation: deliveryLocation.value,
+  //     rLocation: receiveLocation.value,
+  //     pickupDate: deliveryDate.text,
+  //     receiveDate: receiveDate.text,
+  //     withDriver: withDriver.value ? "yes" : "no",
+  //   );
+  //   LoadingOverlay.of(Get.context!).hide();
 
-    // Get.to(DashboardScreen());
-    LoadingOverlay.of(Get.context!).show();
-    http.Response? res = await DashboardRepo.createBooking(
-      vehicleId: vehicle!.id!.toString(),
-      pLocation: deliveryLocation.value,
-      rLocation: receiveLocation.value,
-      pickupDate: deliveryDate.text,
-      receiveDate: receiveDate.text,
-      withDriver: withDriver.value ? "yes" : "no",
-    );
-    LoadingOverlay.of(Get.context!).hide();
-
-    if (res != null) {
-      var decoded = json.decode(res.body);
-      if (res.statusCode == 200 || res.statusCode == 201) {
-        toast("bookingsuccessfully".tr);
-        Get.find<MyReservationsScreenController>().currentPage.value = 1;
-        Get.find<MyReservationsScreenController>().getBookings(true);
-        Get.back();
-      } else if ([409, 403, 401, 400].contains(res.statusCode)) {
-        toast(decoded['message']);
-      } else if (res.statusCode == 422) {
-        if (decoded['data'].containsKey("receive_location")) {
-          receiveLocationError.value =
-              decoded['data']['receive_location'].first;
-        }
-        if (decoded['data'].containsKey("pickup_location")) {
-          deliveryLocationError.value =
-              decoded['data']['pickup_location'].first;
-        }
-        if (decoded['data'].containsKey("receive_date")) {
-          toast("${decoded['data']['receive_date'].first}");
-        }
-        if (decoded['data'].containsKey("pickup_date")) {
-          toast("${decoded['data']['pickup_date'].first}");
-        }
-      } else if (res.statusCode == 500) {
-        toast(AppConfig.api500Error);
-      }
-    } else {
-      toast(AppConfig.apiError);
-    }
-    Get.off(() => MyReservationsScreen());
-  }
+  //   if (res != null) {
+  //     var decoded = json.decode(res.body);
+  //     if (res.statusCode == 200 || res.statusCode == 201) {
+  //       toast("bookingsuccessfully".tr);
+  //       Get.find<MyReservationsScreenController>().currentPage.value = 1;
+  //       Get.find<MyReservationsScreenController>().getBookings(true);
+  //       Get.back();
+  //     } else if ([409, 403, 401, 400].contains(res.statusCode)) {
+  //       toast(decoded['message']);
+  //     } else if (res.statusCode == 422) {
+  //       if (decoded['data'].containsKey("receive_location")) {
+  //         receiveLocationError.value =
+  //             decoded['data']['receive_location'].first;
+  //       }
+  //       if (decoded['data'].containsKey("pickup_location")) {
+  //         deliveryLocationError.value =
+  //             decoded['data']['pickup_location'].first;
+  //       }
+  //       if (decoded['data'].containsKey("receive_date")) {
+  //         toast("${decoded['data']['receive_date'].first}");
+  //       }
+  //       if (decoded['data'].containsKey("pickup_date")) {
+  //         toast("${decoded['data']['pickup_date'].first}");
+  //       }
+  //     } else if (res.statusCode == 500) {
+  //       toast(AppConfig.api500Error);
+  //     }
+  //   } else {
+  //     toast(AppConfig.apiError);
+  //   }
+  //   // Get.off(() => MyReservationsScreen());
+  // }
 }

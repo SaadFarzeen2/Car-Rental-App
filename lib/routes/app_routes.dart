@@ -70,7 +70,7 @@ class AppRoutes {
     GetPage(name: planDetailScreen, page: () => PlanDetailScreen()),
     GetPage(name: planListScreen, page: () => PlanListScreen()),
     GetPage(name: dateSelectionScreen, page: () => const DateSelectionScreen()),
-    GetPage(name: initialCarDetailScreen, page: () => InitialCarDetailScreen()),
+    // GetPage(name: initialCarDetailScreen, page: () => InitialCarDetailScreen(delivery_datetime: null,)),
     GetPage(name: searchScreen, page: () => SearchScreen()),
     GetPage(name: languageScreen, page: () => LanguageListScreen()),
     GetPage(name: registerVerify, page: () => VerifyRegisterScreen()),
